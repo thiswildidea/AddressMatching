@@ -1,8 +1,8 @@
 {
-    "filename":"./data/qingpu.csv",
+    "filename":"./data/qingpu1.csv",
     "source":"http://restapi.amap.com/v3/geocode/geo",
     "tokenkey":"0ebb4aa55b75260070c7435e73b22a6c",
-    "tablename":"qingpu",
+    "tablename":"qingpu1",
     "srid":4326,
     "tablefileds":[
         { "name": "项目地点", "type": "String", "length":256},
@@ -13,7 +13,7 @@
         { "name": "city", "type": "String", "length":10},
         { "name": "district", "type": "String", "length":10}
     ],
-    "parallelism":40,
+    "parallelism":1,
     "target":{
         "host":"localhost",
         "port":5432,
