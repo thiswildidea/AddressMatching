@@ -1,0 +1,28 @@
+{
+  "name": "arcgismapserver2postgis",
+  "version": "1.0.0",
+  "description": "该库可将arcgis mapserver上发布的矢量服务，获取矢量数据存储到postgis库",
+  "main": "index.js",
+  "bin": {
+    "ArcGISMapServer2PostGIS": "./bin/locationget.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreeGIS/ArcGISMapServer2Postgis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FreeGIS/ArcGISMapServer2Postgis/issues"
+  },
+  "homepage": "https://github.com/FreeGIS/ArcGISMapServer2Postgis#readme",
+  "dependencies": {
+    "commander": "^6.1.0",
+    "csvtojson": "^2.0.10",
+    "pg": "^8.3.3",
+    "superagent": "^6.1.0"
+  }
+}
