@@ -16,13 +16,6 @@ async function run(config) {
     srid = config.srid;
     tokenkey = config.tokenkey;
     const converter = await csv().fromFile(filename)
-    // converter.forEach((row) => {
-    //         let proj;
-    //         proj= new  Project();
-    //         Object.assign(proj, row);
-    //         Projects.push(proj)
-    //  })
-
     await creat_spatial_table();
     await features2Postgis(converter)
     console.log('finish');
@@ -83,6 +76,7 @@ function getDate2pg(url,prjame, sql_header) {
                 if (!dataSet || !dataSet.geocodes) {
                     console.log('features null', url);
                     resolve('null');
+                    resolve(prjame.项目地点);
                     return;
                 }
                 for (let j = 0; j < dataSet.geocodes.length; j++) {
@@ -107,7 +101,7 @@ function getDate2pg(url,prjame, sql_header) {
                 }
                 pool.query(sql, function (db_err, db_res) {
                     if (db_err) {
-                        console.log(db_err);
+                        // console.log(db_err);
                         resolve(db_err);
                     }
                     reject('SUCCESS');
