@@ -1,8 +1,8 @@
 {
-    "filename":"./data/qingpu1.csv",
+    "filename":"./data/jiashang.csv",
     "source":"http://restapi.amap.com/v3/geocode/geo",
     "tokenkey":"0ebb4aa55b75260070c7435e73b22a6c",
-    "tablename":"qingpu1",
+    "tablename":"jiashang",
     "srid":4326,
     "tablefileds":[
         { "name": "项目地点", "type": "String", "length":256},

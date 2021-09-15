@@ -61,7 +61,6 @@ function getDate2pg(url,prjame, sql_header) {
                 if (err) {
                     console.log(url);
                     resolve(err);
-                    // return;
                 }
                 const datas = res.body.toString();
                 let dataSet;
@@ -75,8 +74,8 @@ function getDate2pg(url,prjame, sql_header) {
                 let sql = sql_header;
                 if (!dataSet || !dataSet.geocodes) {
                     console.log('features null', url);
+                    console.log(prjame.项目地点);
                     resolve('null');
-                    resolve(prjame.项目地点);
                     return;
                 }
                 for (let j = 0; j < dataSet.geocodes.length; j++) {
@@ -101,7 +100,7 @@ function getDate2pg(url,prjame, sql_header) {
                 }
                 pool.query(sql, function (db_err, db_res) {
                     if (db_err) {
-                        // console.log(db_err);
+                        console.log('error', url);
                         resolve(db_err);
                     }
                     reject('SUCCESS');
@@ -127,7 +126,8 @@ async function features2Postgis(Projects) {
 
     let promises = [];
      for (let i = 0; i < feature_count; i++) {
-         const url = `${amapurl}?address=${encodeURI(Projects[i].项目地点)}&key=${tokenkey}`;
+         const addressname = Projects[i].项目地点.replace('#','')
+         const url = `${amapurl}?address=${encodeURI(addressname)}&key=${tokenkey}`;
          promises.push(getDate2pg(url, Projects[i], sql_header));
         if (promises.length == parallelism) {
             await Promise.all(promises);
